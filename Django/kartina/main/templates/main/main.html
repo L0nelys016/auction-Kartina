@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KARTINA</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    /* Шапка */
+    .header {
+        background-color: #4CAF50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    }
+    /* Логотип */
+    .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+    .logo img:hover {
+        transform: scale(1.1);
+    }
+    /* Название */
+    .title {
+        flex: 1;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    /* Кнопка входа */
+    .user-area {
+        cursor: pointer;
+        padding: 8px 16px;
+        background-color: #fff;
+        color: #4CAF50;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+    .user-area:hover {
+        background-color: #45a049;
+        color: white;
+    }
+    /* Основной контейнер */
+    .container {
+        display: flex;
+        padding: 15px;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    /* Основные категории */
+    .main-content {
+        flex: 3;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 100%;
+    }
+    /* Стили категорий */
+    .category {
+        position: relative;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+    }
+    /* Эффекты при наведении на категорию */
+    .category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .category:hover::before {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+    /* Фоновые изображения */
+    .category::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.8;
+        z-index: 0;
+        transition: all 0.5s ease;
+    }
+    /* Заголовки категорий */
+    .category h3 {
+        position: relative;
+        margin: 0;
+        font-size: 18px;
+        color: #fff;
+        padding: 6px 0;
+        z-index: 1;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    /* Фоны для категорий */
+    .category-1::before {
+        background-image: url('Sovremenoe_isscustvo.png');
+    }
+    .category-2::before {
+        background-image: url('Klassichekoe_iskysstvo.png');
+    }
+    .category-3::before {
+        background-image: url('Abstrakcia.png');
+    }
+    .category-4::before {
+        background-image: url('Portreti.png');
+    }
+
+    /* Сайдбар */
+    .sidebar {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        min-width: 180px;
+    }
+    /* Реклама */
+    .advertisement {
+        background-color: #d4edda;
+        border-radius: 10px;
+        border: 1px solid #c3e6cb;
+        padding: 15px;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .advertisement img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    /* Подвал */
+    .footer {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        font-size: 14px;
+    }
+    .contact-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        min-width: 160px;
+    }
+    .social-link {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .social-link:hover {
+        color: #ffeaa7;
+        text-decoration: none;
+    }
+    .phone {
+        font-weight: bold;
+        color: #ffeaa7;
+    }
+
+    /* Адаптивность */
+    @media(max-width: 768px) {
+        .main-content {
+            grid-template-columns: 1fr;
+        }
+        .sidebar {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Шапка -->
+<div class="header">
+    <div class="logo">
+       <img src="/media/Logo.png" alt="Логотип">
+    </div>
+    <div class="title">KARTINA</div>
+    <div class="user-area">Вход / Личный кабинет</div>
+</div>
+
+<!-- Основной контент -->
+<div class="container">
+    <div class="main-content">
+        <div class="category category-1">
+            <h3>Современное искусство</h3>
+        </div>
+        <div class="category category-2">
+            <h3>Классическое искусство</h3>
+        </div>
+        <div class="category category-3">
+            <h3>Абстракция</h3>
+        </div>
+        <div class="category category-4">
+            <h3>Портреты</h3>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="advertisement">
+            <img src="media/auction-art.png" alt="Реклама аукциона картин">
+        </div>
+    </div>
+</div>
+
+<!-- Подвал -->
+<div class="footer">
+    <div class="contact-item">
+        <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+    </div>
+    <div class="contact-item">
+        <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+    </div>
+    <div class="contact-item">
+        <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+    </div>
+    <div class="contact-item">
+        <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+    </div>
+</div>
+
+</body>
+</html>
