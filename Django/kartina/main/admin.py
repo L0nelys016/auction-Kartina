@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import modern_picture, classic_picture, abstract_picture, portret_picture
+
+admin.site.register(modern_picture)
+admin.site.register(classic_picture)
+admin.site.register(abstract_picture)
+admin.site.register(portret_picture)

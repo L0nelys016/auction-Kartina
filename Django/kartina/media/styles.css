@@ -1,0 +1,316 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Шапка */
+.header {
+    background-color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user-area {
+    cursor: pointer;
+    padding: 8px 20px;
+    background-color: #fff;
+    color: #4CAF50;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+    margin-left: 5px; /* или другой размер */
+}
+
+.user-area:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* Основной контейнер */
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+/*Для картин*/
+.main-content.list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* расстояние между элементами */
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+
+.main-content.grid-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Стили для картин */
+.artwork {
+    border: 1px solid #4CAF50;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+.artwork:hover {
+    border-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.artwork img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* Стили для категорий */
+.category {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s;
+}
+.category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.category:hover::before {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+.category::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 0;
+    transition: all 0.3s;
+}
+.category h3 {
+    position: relative;
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+    padding: 6px 0;
+    z-index: 1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    font-weight: bold;
+}
+
+/* Кнопки цены */
+.price-buttons {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.price-buttons button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.price-buttons button:hover {
+    background-color: #45a049;
+}
+
+/* Пользовательская цена */
+.custom-price {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    display: none;
+}
+
+/* Таймер */
+.timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Избранное */
+.favorite {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-left: auto;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.favorite.active {
+    color: gold;
+}
+
+/* Сайдбар */
+.sidebar {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Реклама */
+.advertisement {
+    background-color: #d4edda;
+    border-radius: 10px;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Реклама */
+.advertisement1 {
+    background-color: #d4edda;
+    border-radius: 10px;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.advertisement img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Подвал */
+.footer {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+}
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 160px;
+}
+.social-link {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.social-link:hover {
+    color: #ffeaa7;
+    text-decoration: none;
+}
+.phone {
+    font-weight: bold;
+    color: #ffeaa7;
+}
+
+/* Сообщения */
+.message {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Адаптивность */
+@media(max-width: 768px) {
+    .container {
+        width: 95%;
+        flex-direction: column;
+    }
+    .main-content {
+        grid-template-columns: 1fr;
+        
+    }
+    .sidebar {
+        width: 100%;
+        margin-left: 0;
+    }
+    .artwork {
+        flex-direction: column;
+        text-align: center;
+    }
+    .artwork img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .price-buttons {
+        justify-content: center;
+    }
+    .favorite {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+} 
+
