@@ -31,3 +31,11 @@ class portret_picture(models.Model):
 
     def __str__(self):
         return self.title
+
+class favorites_picture(models.Model):
+    title = models.CharField('Название картины', max_length=50)
+    price = models.IntegerField(default=0)
+    picture = models.CharField('Путь к изображению', max_length=255)
+
+    def __str__(self):
+        return self.title

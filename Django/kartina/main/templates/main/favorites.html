@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTINA</title>
+    <link rel="stylesheet" href="/media/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="/">
+                <img src="/media/logo.png" alt="Логотип" />
+            </a>
+        </div>
+        <div class="title">KARTINA</div>
+    <div class="user-area">
+        <div>Избранное</div>
+    </div>
+    <div class="user-area">Вход / Личный кабинет</div>
+</div>
+<h2 style="text-align: center; margin-top: 20px;">Мои избранные картины</h2>
+
+    
+    
+  
+    <div class="container">
+      
+        <div class="main-content list">
+            {% for el in favorite %}
+                <div class="artwork">
+                    <img src="{{ el.picture.url }}" alt="{{ el.title }}">
+                    <div>
+                        <h3>{{ el.title }}</h3>
+                        <p>Цена: <span class="price"> {{ el.price }} </span></p>
+                        <div class="price-buttons">
+                            <button onclick="setCustomPrice(100, this)">100$</button>
+                            <button onclick="setCustomPrice(500, this)">500$</button>
+                            <button onclick="setCustomPrice(1000, this)">1000$</button>
+                            <button onclick="setCustomPrice(5000, this)">5000$</button>
+                            <button onclick="showCustomPrice(this)">Своя цена</button>
+                        </div>
+                        <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                        <div class="message" style="display: none;"></div>
+                    </div>
+                    <div class="favorite" onclick="toggleFavorite(this)">☆</div>
+                    <div class="timer">00:10:00</div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    
+
+     </div>
+    </div>
+    <!-- Подвал -->
+    <div class="footer">
+        <div class="contact-item">
+            <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+        </div>
+        <div class="contact-item">
+            <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+        </div>
+        <div class="contact-item">
+            <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+        </div>
+        <div class="contact-item">
+            <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+        </div>
+    </div>
+
+    <script>
+        // Массив избранных товаров из localStorage
+        let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+
+        // Объект товаров, например, так можно сохранить или получить из базы
+        // Для этого примера создадим список товаров
+        const products = [
+            {
+                id: 1,
+                name: "Странники",
+                price: "0$",
+                image: "Kartina1_Sovrem_isk.jpg"
+            },
+            {
+                id: 2,
+                name: "Неверный путь домой",
+                price: "0$",
+                image: "Kartina2_Sovrem_isk.png"
+            },
+            {
+                id: 3,
+                name: "Размах крыльев",
+                price: "0$",
+                image: "Kartina3_Sovrem_isk.png"
+            },
+            {
+                id: 4,
+                name: "Танец на флайборде",
+                price: "0$",
+                image: "Kartina4_Sovrem_isk.png"
+            },
+            {
+                id: 5,
+                name: "Сын человеческий",
+                price: "0$",
+                image: "Kartina1_Port.png"
+            },
+            {
+                id: 6,
+                name: "Женщина в шляпе",
+                price: "0$",
+                image: "Kartina2_Port.png"
+            },
+            {
+                id: 7,
+                name: "Принцип удовольствия",
+                price: "0$",
+                image: "Kartina3_Port.png"
+            },
+            {
+                id: 8,
+                name: "Джокер",
+                price: "0$",
+                image: "Kartina4_Port.png"
+            },
+            {
+                id: 9,
+                name: "Девочка с персиками",
+                price: "0$",
+                image: "Kartina1_Klas_isk.png"
+            },
+            {
+                id: 10,
+                name: "Богатыри (Три богатыря)",
+                price: "0$",
+                image: "Kartina2_Klas_isk.png"
+            },
+            {
+                id: 11,
+                name: "Утро в сосновом бору",
+                price: "0$",
+                image: "Kartina3_Klas_isk.png"
+            },
+            {
+                id: 12,
+                name: "Бурлаки на Волге",
+                price: "0$",
+                image: "Kartina4_Klas_isk.png"
+            },
+            {
+                id: 13,
+                name: "Транскодер Армагеддон",
+                price: "0$",
+                image: "Kartina1_Abs.png"
+            },
+            {
+                id: 14,
+                name: "Видит",
+                price: "0$",
+                image: "Kartina2_Abs.png"
+            },
+            {
+                id: 15,
+                name: "Люди",
+                price: "0$",
+                image: "Kartina3_Abs.png"
+            },
+            {
+                id: 16,
+                name: "Сеять Раздор",
+                price: "0$",
+                image: "Kartina4_Abs.png"
+            }
+        ];
+
+        const container = document.getElementById('favorites-container');
+
+        function renderFavorites() {
+            container.innerHTML = ''; // очистить
+
+            if (favorites.length === 0) {
+                container.innerHTML = '<p style="text-align: center;">Нет выбранных картин.</p>';
+                return;
+            }
+
+            favorites.forEach(id => {
+                const product = products.find(p => p.id === id);
+                if (product) {
+                    const artDiv = document.createElement('div');
+                    artDiv.className = 'artwork';
+                    artDiv.dataset.id = product.id;
+
+                    // Создаем содержимое
+                    artDiv.innerHTML = `
+                        <div class="favorite active" onclick="toggleFavorite(this, ${product.id})">★</div>
+                        <img src="${product.image}" alt="${product.name}" />
+                        <h3>${product.name}</h3>
+                        <p>Цена: <span class="price">${product.price}</span></p>
+                        <div class="timer">00:10:00</div>
+                        <button onclick="removeFromFavorites(${product.id})" style="margin-top:10px;">Удалить из избранного</button>
+                        <div class="message" style="display:none;"></div>
+                    `;
+                    container.appendChild(artDiv);
+                }
+            });
+        }
+
+        function toggleFavorite(star, id) {
+            let favs = JSON.parse(localStorage.getItem('Избранное')) || [];
+            if (favs.includes(id)) {
+                favs = favs.filter(fid => fid !== id);
+                star.textContent = '☆';
+                star.classList.remove('active');
+            } else {
+                favs.push(id);
+                star.textContent = '★';
+                star.classList.add('active');
+            }
+            localStorage.setItem('Избранное', JSON.stringify(favs));
+            // Перерисовать список
+            renderFavorites();
+        }
+
+        function removeFromFavorites(id) {
+            let favs = JSON.parse(localStorage.getItem('Избранное')) || [];
+            favs = favs.filter(fid => fid !== id);
+            localStorage.setItem('Избранное', JSON.stringify(favs));
+            renderFavorites();
+        }
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('favorite')) {
+        const fav = event.target;
+        const isActive = fav.classList.contains('active');
+        if (isActive) {
+            const card = fav.closest('.artwork');
+            if (card) {
+                card.remove();
+            }
+        } else {
+            fav.classList.add('active');
+        }
+    }
+});
+        // Изначально отображать
+        renderFavorites();
+    </script>
+</body>
+</html>

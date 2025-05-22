@@ -15,13 +15,17 @@
         </div>
         <div class="title">KARTINA</div>
         <div class="user-area">
-        <div>Избранное</div>
+            <a href="/favorites" style="text-decoration: none; color: inherit;">Избранное</a>
         </div>
         <div class="user-area">
-           
+
             <div>Вход / Личный кабинет</div>
         </div>
     </div>
+
+    <!-- Добавляем название категории перед товарами -->
+    <h2 style="text-align: center; margin-top: 20px;">Классическое исскуство</h2>
+
     <div class="container">
         <div class="main-content list">
             {% for el in classic_pic %}
@@ -45,32 +49,29 @@
                 </div>
             {% endfor %}
 
-
-
         </div>
-
 
         <div class="sidebar">
-        <div class="advertisement">
-            <img src="/media/auction-art.png" alt="Реклама аукциона картин">
-        </div>
+      <div class="advertisement">
+        <img src="/media/auction-art.png" alt="Реклама аукциона картин" />
+      </div>
     </div>
     </div>
     <!-- Подвал -->
-<div class="footer">
-    <div class="contact-item">
-        <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+    <div class="footer">
+        <div class="contact-item">
+            <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+        </div>
+        <div class="contact-item">
+            <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+        </div>
+        <div class="contact-item">
+            <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+        </div>
+        <div class="contact-item">
+            <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+        </div>
     </div>
-    <div class="contact-item">
-        <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
-    </div>
-    <div class="contact-item">
-        <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
-    </div>
-    <div class="contact-item">
-        <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-    </div>
-</div>
     <script>
         function setCustomPrice(amount, button) {
             const customPriceInput = button.closest('.artwork').querySelector('.custom-price');
@@ -118,12 +119,42 @@
             }
         });
 
-        // Добавляем обработчики клика для всех звездочек
+        // Обработчики для звездочек
         document.querySelectorAll('.favorite').forEach(star => {
             star.addEventListener('click', function() {
                 toggleFavorite(this);
             });
         });
+
+  // Функция для переключения фаворита
+  function toggleFavorite(star, productId) {
+    let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+    if (favorites.includes(productId)) {
+      // Удаляем из избранного
+      favorites = favorites.filter(id => id !== productId);
+      star.textContent = '☆'; // Незакрашенная
+    } else {
+      // Добавляем в избранное
+      favorites.push(productId);
+      star.textContent = '★'; // Закрашенная
+    }
+    localStorage.setItem('Избранное', JSON.stringify(favorites));
+  }
+
+  // Инициализация звездочек при загрузке страницы
+  document.querySelectorAll('.artwork').forEach(art => {
+    const productId = parseInt(art.dataset.id);
+    const star = art.querySelector('.favorite');
+    let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+    if (favorites.includes(productId)) {
+      star.textContent = '★';
+    } else {
+      star.textContent = '☆';
+    }
+    // Обработчик
+    star.onclick = () => toggleFavorite(star, productId);
+  });
+
     </script>
 </body>
 </html>

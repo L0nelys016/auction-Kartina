@@ -7,4 +7,6 @@ urlpatterns = [
     path('classic_art', views.classic_art),
     path('abstraction', views.abstraction),
     path('portrait', views.Portrait),
+    path('favorites', views.favorites),
+    path('add_to_favorites', views.add_to_favorites)
 ]
