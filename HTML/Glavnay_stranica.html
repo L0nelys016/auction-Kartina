@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KARTINA</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KARTINA</title>
+<link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 
 <!-- Шапка -->
 <div class="header">
     <div class="logo">
-            <a href="Glavnay_stranica.html">
-            <img src="logo.png" alt="Логотип">
-            </a>
-        </div>
+        <a href="Glavnay_stranica.html">
+            <img src="logo.png" alt="Логотип" />
+        </a>
+    </div>
     <div class="title">KARTINA</div>
+    <div class="user-area">
+        <div><a href="favorites.html" style="text-decoration: none; color: inherit;">Избранное</a></div>
+    </div>
     <div class="user-area">Вход / Личный кабинет</div>
 </div>
 
-<!-- Основной контент -->
+<!-- Основной контент с сайдбаром справа -->
 <div class="container">
+  <div class="content-wrapper">
+    <!-- Основной контент -->
     <div class="main-content">
-        <a href="Sovrem_iscusstvo.html" class="social-link">
+      <a href="Sovrem_iscusstvo.html" class="social-link">
         <div class="category" style="background-image: url('Sovremenoe_isscustvo.png')">
-            <h3>Современное искусство</h3>
+          <h3>Современное искусство</h3>
         </div>
-        </a>
-        <a href="Klassicheskoe_iskusstvo.html" class="social-link">
+      </a>
+      <a href="Klassicheskoe_iskusstvo.html" class="social-link">
         <div class="category" style="background-image: url('Klassichekoe_iskysstvo.png')">
-            <h3>Классическое искусство</h3>
+          <h3>Классическое искусство</h3>
         </div>
-        </a>
-        <a href="Abstrakcia.html" class="social-link">
+      </a>
+      <a href="Abstrakcia.html" class="social-link">
         <div class="category" style="background-image: url('Abstrakcia.png')">
-            <h3>Абстракция</h3>
+          <h3>Абстракция</h3>
         </div>
-        </a>
-        <a href="Portreti.html" class="social-link">
+      </a>
+      <a href="Portreti.html" class="social-link">
         <div class="category" style="background-image: url('Portreti.png')">
-            <h3>Портреты</h3>
+          <h3>Портреты</h3>
         </div>
-        </a>
+      </a>
     </div>
-    
+    <!-- Блок справа, отдельно от основного -->
     <div class="sidebar">
-        <div class="advertisement">
-            <img src="auction-art.png" alt="Реклама аукциона картин">
-        </div>
+      <div class="advertisement">
+        <img src="auction-art.png" alt="Реклама аукциона картин" />
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Подвал -->

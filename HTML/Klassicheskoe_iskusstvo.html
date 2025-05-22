@@ -15,16 +15,19 @@
         </div>
         <div class="title">KARTINA</div>
         <div class="user-area">
-        <div>Избранное</div>
+        <div><a href="favorites.html" style="text-decoration: none; color: inherit;">Избранное</a></div>
         </div>
         <div class="user-area">
            
             <div>Вход / Личный кабинет</div>
         </div>
     </div>
+
+    <div class="category-title">Классическое искусство</div>
+
     <div class="container">
         <div class="main-content list">
-            <div class="artwork">
+            <div class="artwork"data-id="9">
                 <img src="Kartina1_Klas_isk.png" alt="Картина 1">
                 <div>
                     <h3>Девочка с персиками</h3>
@@ -45,7 +48,7 @@
                 <div class="timer">00:10:00</div>
             </div>
 
-            <div class="artwork">
+            <div class="artwork"data-id="10">
                 <img src="Kartina2_Klas_isk.png" alt="Картина 2">
                 <div>
                     <h3>Богатыри (Три богатыря)</h3>
@@ -66,7 +69,7 @@
                 <div class="timer">00:10:00</div>
             </div>
 
-            <div class="artwork">
+            <div class="artwork"data-id="11">
                 <img src="Kartina3_Klas_isk.png" alt="Картина 3">
                 <div>
                     <h3>Утро в сосновом бору</h3>
@@ -87,7 +90,7 @@
                 <div class="timer">00:10:00</div>
             </div>
 
-            <div class="artwork">
+            <div class="artwork"data-id="12">
                 <img src="Kartina4_Klas_isk.png" alt="Картина 4">
                 <div>
                     <h3>Бурлаки на Волге</h3>
@@ -113,9 +116,10 @@
 
 
         <div class="sidebar">
-        <div class="advertisement">
-            <img src="auction-art.png" alt="Реклама аукциона картин">
-        </div>
+      <div class="advertisement">
+        <img src="auction-art.png" alt="Реклама аукциона картин" />
+      </div>
+    </div>
     </div>
     </div>
     <!-- Подвал -->
@@ -180,12 +184,41 @@
             }
         });
 
-        // Добавляем обработчики клика для всех звездочек
+        // Обработчики для звездочек
         document.querySelectorAll('.favorite').forEach(star => {
             star.addEventListener('click', function() {
                 toggleFavorite(this);
             });
         });
+        
+  // Функция для переключения фаворита
+  function toggleFavorite(star, productId) {
+    let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+    if (favorites.includes(productId)) {
+      // Удаляем из избранного
+      favorites = favorites.filter(id => id !== productId);
+      star.textContent = '☆'; // Незакрашенная
+    } else {
+      // Добавляем в избранное
+      favorites.push(productId);
+      star.textContent = '★'; // Закрашенная
+    }
+    localStorage.setItem('Избранное', JSON.stringify(favorites));
+  }
+
+  // Инициализация звездочек при загрузке страницы
+  document.querySelectorAll('.artwork').forEach(art => {
+    const productId = parseInt(art.dataset.id);
+    const star = art.querySelector('.favorite');
+    let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+    if (favorites.includes(productId)) {
+      star.textContent = '★';
+    } else {
+      star.textContent = '☆';
+    }
+    // Обработчик
+    star.onclick = () => toggleFavorite(star, productId);
+  });
     </script>
 </body>
 </html>

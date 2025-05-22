@@ -1,4 +1,12 @@
-/* Общие стили */
+/* Общие базовые стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Можно оставить тут, если нужно */
+}
+
+/* Основные стили из второго блока */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -16,7 +24,6 @@ body {
     color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
 .logo img {
     width: 50px;
     height: 50px;
@@ -27,14 +34,12 @@ body {
 .logo img:hover {
     transform: scale(1.1);
 }
-
 .title {
     flex: 1;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
 }
-
 .user-area {
     cursor: pointer;
     padding: 8px 20px;
@@ -46,13 +51,12 @@ body {
     transition: all 0.3s;
     margin-left: 5px; /* или другой размер */
 }
-
 .user-area:hover {
     background-color: #45a049;
     color: white;
 }
 
-/* Основной контейнер */
+/* Общий контейнер */
 .container {
     display: flex;
     width: 80%;
@@ -65,8 +69,7 @@ body {
     gap: 15px;
 }
 
-
-/*Для картин*/
+/* Для картин - оба варианта, в зависимости от класса (list или grid) */
 .main-content.list {
     display: flex;
     flex-direction: column;
@@ -79,14 +82,13 @@ body {
     gap: 15px;
 }
 
-
 .main-content.grid-view {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-/* Стили для картин */
+/* Карточки картин (artwork) */
 .artwork {
     border: 1px solid #4CAF50;
     margin: 10px 0;
@@ -109,8 +111,31 @@ body {
     margin-right: 10px;
     object-fit: cover;
 }
+.artwork h3 {
+    margin: 10px 0 5px 0;
+}
+.price {
+    font-weight: bold;
+}
+.timer {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555;
+}
 
-/* Стили для категорий */
+/* Стиль для звездочек "Избранное" */
+.favorite {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-left: auto;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.favorite.active {
+    color: gold;
+}
+
+/* Категории */
 .category {
     position: relative;
     border-radius: 10px;
@@ -154,7 +179,7 @@ body {
     font-weight: bold;
 }
 
-/* Кнопки цены */
+/* Цены и кнопки */
 .price-buttons {
     margin: 10px 0;
     display: flex;
@@ -194,7 +219,7 @@ body {
     color: #4CAF50;
 }
 
-/* Избранное */
+/* Избранное (звездочки) */
 .favorite {
     font-size: 20px;
     color: #4CAF50;
@@ -226,7 +251,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-/* Реклама */
 .advertisement1 {
     background-color: #d4edda;
     border-radius: 10px;
@@ -291,7 +315,6 @@ body {
     }
     .main-content {
         grid-template-columns: 1fr;
-        
     }
     .sidebar {
         width: 100%;
@@ -312,5 +335,79 @@ body {
         margin-left: 0;
         margin-top: 10px;
     }
-} 
+}
 
+/* Заголовки по категориям */
+.category-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Обертка для контента и сайдбара */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* отступ между блоками */
+}
+.main-content {
+    flex: 3;
+}
+.sidebar {
+    flex: 1;
+}
+.advertisement img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*избранное*/
+ .nav-link {
+            font-size: 20px;
+            font-weight: normal;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: auto;
+            padding: 10px;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+        
+        /* Стиль для звездочки */
+        .favorite.active {
+            color: gold;
+        }
+        /* Стиль для стрелки или другого элемента, если нужен */
+        .timer {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #555;
+        }
+        /* Стиль для сообщения */
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+        }
+        /* Стиль для footer */
+        .footer {
+            background-color: #4CAF50;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer .contact-item {
+            width: 200px;
+        }
