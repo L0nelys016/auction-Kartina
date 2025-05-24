@@ -411,3 +411,171 @@ body {
         .footer .contact-item {
             width: 200px;
         }
+
+/* Авторизация */
+/* Верхняя панель */
+.top-panel {
+  display: flex;
+  align-items: center;
+  background-color: #00a000; /* зеленый */
+  padding: 10px 20px;
+  font-size: 14px;
+}
+.logo-block {
+  background-color: #fff;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.title-block {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  padding: 5px 10px;
+  background-color: #00a000;
+  margin-right: 10px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-block {
+  background-color: #00a000;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.menu-block a {
+  text-decoration: none;
+  color: #fff;
+}
+.auth-block {
+  background-color: #00a000;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.auth-block a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Основной контейнер — занимает всё оставшееся пространство */
+.main-container {
+  flex: 1; /* занимает всё вертикальное пространство */
+  display: flex;
+  padding: 20px;
+}
+
+/* Левая секция: авторизация по центру */
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center; /* по вертикали */
+  justify-content: center; /* по горизонтали */
+}
+
+/* Центрированный блок авторизации */
+.auth-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+.auth-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+.auth-inputs input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.auth-buttons button {
+  padding: 8px;
+  background-color: #00a000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+.auth-buttons button:hover {
+  background-color: #008000;
+}
+.contact-info {
+  margin-top: 20px;
+  background-color: #00a000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Правая секция — место под рекламу внутри окошка */
+.right-section {
+  width: 350px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ad-window {
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  border: 2px dashed #00a000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Адаптивность */
+@media(max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-section {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 90%;
+  }
+  .auth-box {
+    width: 90%;
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* или любой цвет */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+.button:hover {
+  background-color: #45a049; /* эффект при наведении */
+}
