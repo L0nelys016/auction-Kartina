@@ -580,7 +580,65 @@ body {
   background-color: #45a049; /* эффект при наведении */
 }
 
-/* Кнопка редактировать профиль */
+/* Личный кабинет *
+
+ /* Основной контейнер */
+  .main-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Центральный блок для фото и кнопки */
+  .center-block {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Маленький зеленый блок вокруг фото */
+  .photo-green-background {
+    background-color: #00A550;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px; /* немного больше фото */
+    height: 170px;
+  }
+
+  /* Фото профиля */
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    background-color: #E0E0E0; /* светло-серый фон */
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Белый блок под фото */
+  .profile-info-block {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Кнопка редактировать профиль */
   .edit-profile-button {
     display: inline-block;
     padding: 10px 15px;
@@ -590,11 +648,4 @@ body {
     border-radius: 4px;
     font-size: 14px;
     margin-top: 15px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-  }
-
-  /* Эффект при наведении */
-  .edit-profile-button:hover {
-    background-color: #008a3d; /* чуть более темный цвет */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* подсветка */
   }
