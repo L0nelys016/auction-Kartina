@@ -87,6 +87,7 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
+// Функция переключения избранного для современного искусства
 function toggleFavorite(element, pictureId, pictureType) {
     const isFavorite = element.textContent.trim() === '★';
     const endpoint = isFavorite ? 'remove_from_favorites' : 'add_to_favorites';
@@ -111,12 +112,18 @@ function toggleFavorite(element, pictureId, pictureType) {
         if (data.success) {
             element.textContent = isFavorite ? '☆' : '★';
 
-            // Обновляем информацию об избранном
+            // Обновляем data-атрибут если это добавление
             if (data.favorite_id) {
                 element.dataset.favoriteId = data.favorite_id;
             } else {
                 delete element.dataset.favoriteId;
             }
+
+            // Анимация
+            const artwork = element.closest('.artwork');
+            artwork.style.transition = 'all 0.3s';
+            artwork.style.boxShadow = isFavorite ? '' : '0 0 10px #4CAF50';
+            setTimeout(() => artwork.style.boxShadow = '', 1000);
         }
     })
     .catch(error => {
