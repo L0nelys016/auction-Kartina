@@ -32,10 +32,13 @@ class portret_picture(models.Model):
     def __str__(self):
         return self.title
 
-class favorites_picture(models.Model):
-    title = models.CharField('Название картины', max_length=50)
-    price = models.IntegerField(default=0)
-    picture = models.CharField('Путь к изображению', max_length=255)
 
-    def __str__(self):
-        return self.title
+class favorites_picture(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.IntegerField()
+    picture = models.ImageField(upload_to='favorites/')
+    original_id = models.IntegerField()  # ID оригинальной картины
+    picture_type = models.CharField(max_length=10)  # 'modern', 'classic' и т.д.
+
+    class Meta:
+        unique_together = ('original_id', 'picture_type')

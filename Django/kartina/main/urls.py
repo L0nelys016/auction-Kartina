@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index),
@@ -8,5 +10,6 @@ urlpatterns = [
     path('abstraction', views.abstraction),
     path('portrait', views.Portrait),
     path('favorites', views.favorites),
-    path('add_to_favorites', views.add_to_favorites)
-]
+    path('add_to_favorites', views.add_to_favorites),
+    path('remove_from_favorites', views.remove_from_favorites)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
