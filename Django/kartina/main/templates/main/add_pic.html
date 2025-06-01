@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTINA - Современное искусство</title>
+    <link rel="stylesheet" href="/media/styles.css">
+</head>
+<body>
+
+ <div class="header">
+        <div class="logo">
+            <a href="/">
+                <img src="/media/logo.png" alt="Логотип">
+            </a>
+        </div>
+        <div class="title">KARTINA</div>
+        <div class="user-area">
+            <a href="/favorites" style="text-decoration: none; color: inherit;">Избранное</a>
+        </div>
+    </div>
+
+<h1>Добавить новую картину</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div>
+            <label>Название:</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <div>
+            <label>Цена:</label>
+            <input type="number" name="price" required>
+        </div>
+
+        <div>
+            <label>Категория:</label>
+            <select name="category" required>
+                <option value="modern">Современное искусство</option>
+                <option value="classic">Классическое искусство</option>
+                <option value="abstract">Абстракция</option>
+                <option value="portret">Портреты</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Изображение:</label>
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+
+        <button type="submit">Добавить</button>
+    </form>
+
+     <div class="user-area">
+            <a href="/my_picture" style="text-decoration: none; color: inherit;">Вернутся</a>
+        </div>
+</body>
+</html>

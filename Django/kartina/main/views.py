@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -138,3 +138,40 @@ def remove_from_favorites(request):
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
     return JsonResponse({'success': False, 'error': 'Только POST-запросы'}, status=405)
+
+
+def my_picture(request):
+    # Получаем все картины из всех категорий
+    modern_pic = modern_picture.objects.all()
+    classic_pic = classic_picture.objects.all()
+    abstract_pic = abstract_picture.objects.all()
+    portret_pic = portret_picture.objects.all()
+
+    return render(request, 'main/my_picture.html', {
+        'modern_arts': modern_pic,
+        'classic_arts': classic_pic,
+        'abstract_arts': abstract_pic,
+        'portret_arts': portret_pic,
+    })
+
+
+@csrf_exempt
+def add_pic(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        price = request.POST.get('price')
+        category = request.POST.get('category')
+        image = request.FILES.get('image')
+
+        if category == 'modern':
+            modern_picture.objects.create(title=title, price=price, picture=image)
+        elif category == 'classic':
+            classic_picture.objects.create(title=title, price=price, picture=image)
+        elif category == 'abstract':
+            abstract_picture.objects.create(title=title, price=price, picture=image)
+        elif category == 'portret':
+            portret_picture.objects.create(title=title, price=price, picture=image)
+
+        return redirect('add_pic')
+
+    return render(request, 'main/my_picture.html')

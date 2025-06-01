@@ -42,3 +42,4 @@ class favorites_picture(models.Model):
 
     class Meta:
         unique_together = ('original_id', 'picture_type')
+
