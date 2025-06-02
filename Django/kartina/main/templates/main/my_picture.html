@@ -5,10 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KARTINA - Современное искусство</title>
     <link rel="stylesheet" href="/media/styles.css">
+    <style>
+        /* Дополнительные стили для кнопок */
+        .add-btn-container {
+            text-align: right;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+        
+        .add-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            max-width: 200px;
+            text-align: center;
+        }
+        
+        .add-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .artwork {
+            position: relative;
+            padding-bottom: 10px; /* Место для кнопки удаления */
+        }
+        
+        .delete-btn {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            padding: 8px 15px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .artwork-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 
- <div class="header">
+    <div class="header">
         <div class="logo">
             <a href="/">
                 <img src="/media/logo.png" alt="Логотип">
@@ -20,39 +75,77 @@
         </div>
     </div>
 
-<h1>Управление картинами</h1>
+    <h2 style="text-align: center; margin-top: 20px;">Мои картины</h2>
 
-    <div class="user-area">
-            <a href="/add_pic" style="text-decoration: none; color: inherit;">Добавить картину</a>
+    <div class="container">
+        
+
+        <div class="main-content list">
+            <h2>Современное искусство</h2>
+            {% for art in modern_arts %}
+            <div class="artwork">
+                <div class="artwork-content">
+                    <img src="{{ art.picture.url }}" alt="{{ art.title }}">
+                    <div>
+                        <h3>{{ art.title }}</h3>
+                        <p>Цена: <span class="price">{{ art.price }}</span></p>
+                        <div class="message" style="display: none;"></div>
+                    </div>
+                    <button class="delete-btn" onclick="deletePicture({{ art.id }}, 'modern')">Удалить</button>
+                </div>
+            </div>
+            {% endfor %}
+
+            <h2>Классическое искусство</h2>
+            {% for art in classic_arts %}
+            <div class="artwork">
+                <div class="artwork-content">
+                    <img src="{{ art.picture.url }}" alt="{{ art.title }}">
+                    <div>
+                        <h3>{{ art.title }}</h3>
+                        <p>Цена: <span class="price">{{ art.price }}</span></p> 
+                        <div class="message" style="display: none;"></div>
+                    </div>
+                    <button class="delete-btn" onclick="deletePicture({{ art.id }}, 'classic')">Удалить</button>
+                </div>
+            </div>
+            {% endfor %}
+
+            <h2>Абстракция</h2>
+            {% for art in abstract_arts %}
+            <div class="artwork">
+                <div class="artwork-content">
+                    <img src="{{ art.picture.url }}" alt="{{ art.title }}">
+                    <div>
+                        <h3>{{ art.title }}</h3>
+                        <p>Цена: <span class="price">{{ art.price }}</span></p>
+                        <div class="message" style="display: none;"></div>
+                    </div>
+                    <button class="delete-btn" onclick="deletePicture({{ art.id }}, 'abstract')">Удалить</button>
+                </div>
+            </div>
+            {% endfor %}
+
+            <h2>Портреты</h2>
+            {% for art in portret_arts %}
+            <div class="artwork">
+                <div class="artwork-content">
+                    <img src="{{ art.picture.url }}" alt="{{ art.title }}">
+                    <div>
+                        <h3>{{ art.title }}</h3>
+                        <p>Цена: <span class="price">{{ art.price }}</span></p>
+                        <div class="message" style="display: none;"></div>
+                    </div>
+                    <button class="delete-btn" onclick="deletePicture({{ art.id }}, 'portret')">Удалить</button>
+                </div>
+            </div>
+            {% endfor %}
         </div>
 
-    <h2>Современное искусство</h2>
-    <ul>
-        {% for art in modern_arts %}
-        <li>{{ art.title }} - {{ art.price }}$</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Классическое искусство</h2>
-    <ul>
-        {% for art in classic_arts %}
-        <li>{{ art.title }} - {{ art.price }}$</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Абстракция</h2>
-    <ul>
-        {% for art in abstract_arts %}
-        <li>{{ art.title }} - {{ art.price }}$</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Портреты</h2>
-    <ul>
-        {% for art in portret_arts %}
-        <li>{{ art.title }} - {{ art.price }}$</li>
-        {% endfor %}
-    </ul>
+        <div class="add-btn-container">
+            <a href="/add_pic" class="add-btn">Добавить картину</a>
+        </div>
+    </div>
 
     <div class="footer">
         <div class="contact-item">
@@ -69,5 +162,40 @@
         </div>
     </div>
 
+    <script>
+        function deletePicture(pictureId, pictureType) {
+            if (confirm('Вы уверены, что хотите удалить эту картину?')) {
+                fetch('/delete_picture', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        picture_id: pictureId,
+                        picture_type: pictureType
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Ошибка при удалении: ' + (data.error || 'Неизвестная ошибка'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ошибка соединения');
+                });
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    </script>
 </body>
 </html>

@@ -69,6 +69,7 @@ body {
     gap: 15px;
 }
 
+
 /* Для картин - оба варианта, в зависимости от класса (list или grid) */
 .main-content.list {
     display: flex;

@@ -12,6 +12,7 @@ urlpatterns = [
     path('favorites', views.favorites),
     path('add_to_favorites', views.add_to_favorites),
     path('remove_from_favorites', views.remove_from_favorites),
-    path('my_picture', views.my_picture),
+    path('my_picture', views.my_picture, name='my_picture'),
     path('add_pic', views.add_pic),
+    path('delete_picture', views.delete_picture, name='delete_picture'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

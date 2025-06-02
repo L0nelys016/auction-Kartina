@@ -172,6 +172,39 @@ def add_pic(request):
         elif category == 'portret':
             portret_picture.objects.create(title=title, price=price, picture=image)
 
-        return redirect('add_pic')
+        return redirect('my_picture')
 
-    return render(request, 'main/my_picture.html')
+    return render(request, 'main/add_pic.html')
+
+@csrf_exempt
+def delete_picture(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            picture_id = data.get('picture_id')
+            picture_type = data.get('picture_type')
+
+            # Определяем модель в зависимости от типа картины
+            if picture_type == 'modern':
+                model = modern_picture
+            elif picture_type == 'classic':
+                model = classic_picture
+            elif picture_type == 'abstract':
+                model = abstract_picture
+            elif picture_type == 'portret':
+                model = portret_picture
+            else:
+                return JsonResponse({'success': False, 'error': 'Неверный тип картины'}, status=400)
+
+            # Пытаемся найти и удалить картину
+            try:
+                picture = model.objects.get(id=picture_id)
+                picture.delete()
+                return JsonResponse({'success': True})
+            except model.DoesNotExist:
+                return JsonResponse({'success': False, 'error': 'Картина не найдена'}, status=404)
+
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+    return JsonResponse({'success': False, 'error': 'Только POST-запросы'}, status=405)

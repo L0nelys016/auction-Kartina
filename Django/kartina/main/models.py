@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class modern_picture(models.Model):
@@ -42,4 +43,5 @@ class favorites_picture(models.Model):
 
     class Meta:
         unique_together = ('original_id', 'picture_type')
+
 
