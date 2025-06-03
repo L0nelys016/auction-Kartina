@@ -367,6 +367,7 @@ body {
     display: block;
 }
 
+
 /*избранное*/
  .nav-link {
             font-size: 20px;
@@ -412,3 +413,5 @@ body {
         .footer .contact-item {
             width: 200px;
         }
+
+        

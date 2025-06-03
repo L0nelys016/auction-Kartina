@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KARTINA - Современное искусство</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KARTINA</title>
     <link rel="stylesheet" href="/media/styles.css">
+    <link rel="icon" href="media/Logo-ico.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="media/Logo-ico.ico" type="image/x-icon">
+    <style>
+        .nav-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #fff;
+            color: #4CAF50  ;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 750;
+            border: 1px solid #white;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-button:hover {
+            border-color: #white;
+        }
+    </style>
 </head>
-<body>
-    <div class="header">
-        <div class="logo">
-            <a href="/">
-                <img src="/media/logo.png" alt="Логотип">
-            </a>
-        </div>
-        <div class="title">KARTINA</div>
-        <div class="user-area">
-            <a href="/favorites" style="text-decoration: none; color: inherit;">Избранное</a>
-        </div>
-        <div class="user-area">
-            <div>Мои картины</div>
-        </div>
+
+<div class="header">
+    <div class="logo">
+        <a href="/">
+            <img src="/media/logo.png" alt="Логотип">
+        </a>
     </div>
+    <div class="title">KARTINA</div>
+    <div>
+        {% if user.is_authenticated %}
+            <a href="/favorites" class="nav-button">Избранное</a>
+            <a href="/my_picture" class="nav-button">Мои картины</a>
+            <a href="/logout" class="nav-button">Выйти</a>
+        {% else %}
+            <a href="login" class="nav-button">Войти</a>
+        {% endif %}
+    </div>
+</div>
 
     <h2 style="text-align: center; margin-top: 20px;">Портреты</h2>
 
@@ -62,18 +85,17 @@
     </div>
 
     <div class="footer">
-        <div class="contact-item">
-            <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
-        </div>
-        <div class="contact-item">
-            <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
-        </div>
-        <div class="contact-item">
-            <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
-        </div>
-        <div class="contact-item">
-            <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-        </div>
+    <div class="contact-item">
+        <strong>Телефон:</strong> <span>+7 123 456 78 90</span>
+    </div>
+    <div class="contact-item">
+        <strong>ВКонтакте:</strong> <a href="https://vk.com/yourprofile" style="color: white; text-decoration: none;">vk.com/yourprofile</a>
+    </div>
+    <div class="contact-item">
+        <strong>Телеграм:</strong> <a href="https://t.me/yourusername" style="color: white; text-decoration: none;">@yourusername</a>
+    </div>
+    <div class="contact-item">
+        <strong>Email:</strong> <a href="mailto:info@yourdomain.com" style="color: white; text-decoration: none;">info@yourdomain.com</a>
     </div>
 
 <script>
