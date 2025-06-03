@@ -1,0 +1,135 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0" version="27.1.1">
+  <diagram name="Страница — 1" id="BJoPQupQMTP9wN722gMG">
+    <mxGraphModel dx="1624" dy="391" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-1" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="170" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-2" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" source="Pz7HpV5F2o3lcfN9i-EV-1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="185" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-3" value="Создан лот" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="125" y="150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-4" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="Pz7HpV5F2o3lcfN9i-EV-3" parent="1" target="Pz7HpV5F2o3lcfN9i-EV-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-6" value="Отзыв лота" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="560" y="150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-7" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pz7HpV5F2o3lcfN9i-EV-5" target="Pz7HpV5F2o3lcfN9i-EV-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="375" y="170" as="targetPoint" />
+            <mxPoint x="430" y="170" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-8" value="Аукцион завершен, есть победитель" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="750" y="150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-9" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="Pz7HpV5F2o3lcfN9i-EV-8" parent="1" target="Pz7HpV5F2o3lcfN9i-EV-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-10" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pz7HpV5F2o3lcfN9i-EV-6" target="Pz7HpV5F2o3lcfN9i-EV-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="170" as="targetPoint" />
+            <mxPoint x="450" y="170" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-11" value="Аукцион завершен, нет победителя" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="950" y="150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-12" value="Не продан" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="140" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-13" value="Продан" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="140" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-14" value="Отозван" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="140" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-15" value="Ожидание публикации" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="140" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-5" value="Публикация лота" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="370" y="150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-17" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pz7HpV5F2o3lcfN9i-EV-5" target="Pz7HpV5F2o3lcfN9i-EV-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="475" y="210" as="targetPoint" />
+            <mxPoint x="350" y="210" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="430" y="250" />
+              <mxPoint x="185" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-18" value="Нет лота" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="220" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-19" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pz7HpV5F2o3lcfN9i-EV-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="190" as="targetPoint" />
+            <mxPoint x="415" y="190" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="620" y="280" />
+              <mxPoint x="170" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-20" value="Ошибка" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="260" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-21" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="Pz7HpV5F2o3lcfN9i-EV-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="190" as="targetPoint" />
+            <mxPoint x="800" y="190" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="800" y="310" />
+              <mxPoint x="155" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-23" value="Аукцион не завершается" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="290" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-24" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0.15;entryY=0.975;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" target="Pz7HpV5F2o3lcfN9i-EV-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="190" as="targetPoint" />
+            <mxPoint x="1005" y="190" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="1005" y="340" />
+              <mxPoint x="143" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-25" value="нет участия в аукционе" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="316" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-26" value="(Срок действия лота истек) / Создать новый" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-50" y="100" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Pz7HpV5F2o3lcfN9i-EV-27" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="Pz7HpV5F2o3lcfN9i-EV-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="180" as="targetPoint" />
+            <mxPoint x="125" y="110" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="125" y="160" />
+              <mxPoint x="126" y="160" />
+              <mxPoint x="126" y="100" />
+              <mxPoint x="-150" y="100" />
+              <mxPoint x="-150" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

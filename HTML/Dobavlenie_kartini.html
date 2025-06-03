@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Добавление картины</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<div class="container" style="margin-top:30px;">
+    <h1>Добавление новой картины</h1>
+    <div class="content-wrapper" style="margin-top:20px;">
+        <!-- Форма -->
+        <form class="add-picture-form" action="/submit-picture" method="POST">
+            <!-- Левая часть: поля -->
+            <div style="flex:3; display:flex; flex-direction: column; gap:15px;">
+                <div class="form-group" style="margin-bottom:10px;">
+                    <label for="name" style="font-weight:bold;">Название картины</label>
+                    <input type="text" id="name" name="name" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                </div>
+                <div class="form-group" style="margin-bottom:10px;">
+                    <label for="category" style="font-weight:bold;">Категория</label>
+                    <select id="category" name="category" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                        <option value="">Выберите категорию</option>
+                        <option value="живопись">Современное искусство</option>
+                        <option value="скульптура">Абстракция</option>
+                        <option value="фотография">Классическое искусство</option>
+                        <option value="фотография">Портреты</option>
+                        <!-- добавьте нужные категории -->
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom:10px;">
+                    <label for="price" style="font-weight:bold;">Цена</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                </div>
+                <a href="Lichniy_kabinet.html" class="button" style="margin-top:10px; display:inline-block; padding:10px 20px; background-color:#4CAF50; color:white; text-decoration:none; border-radius:4px;">Добавить картину</a>
+            </div>
+        </form>
+        <!-- Правая часть: изображение -->
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Картина" />
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

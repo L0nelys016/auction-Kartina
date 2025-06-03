@@ -1,0 +1,751 @@
+/* Общие базовые стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Можно оставить тут, если нужно */
+}
+
+/* Основные стили из второго блока */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Шапка */
+.header {
+    background-color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.logo img:hover {
+    transform: scale(1.1);
+}
+.title {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.user-area {
+    cursor: pointer;
+    padding: 8px 20px;
+    background-color: #fff;
+    color: #4CAF50;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+    margin-left: 5px; /* или другой размер */
+}
+.user-area:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* Общий контейнер */
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Для картин - оба варианта, в зависимости от класса (list или grid) */
+.main-content.list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* расстояние между элементами */
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.main-content.grid-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Карточки картин (artwork) */
+.artwork {
+    border: 1px solid #4CAF50;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+.artwork:hover {
+    border-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.artwork img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+.artwork h3 {
+    margin: 10px 0 5px 0;
+}
+.price {
+    font-weight: bold;
+}
+.timer {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555;
+}
+
+/* Стиль для звездочек "Избранное" */
+.favorite {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-left: auto;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.favorite.active {
+    color: gold;
+}
+
+/* Категории */
+.category {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s;
+}
+.category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.category:hover::before {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+.category::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 0;
+    transition: all 0.3s;
+}
+.category h3 {
+    position: relative;
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+    padding: 6px 0;
+    z-index: 1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    font-weight: bold;
+}
+
+/* Цены и кнопки */
+.price-buttons {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.price-buttons button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.price-buttons button:hover {
+    background-color: #45a049;
+}
+
+/* Пользовательская цена */
+.custom-price {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    display: none;
+}
+
+/* Таймер */
+.timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Избранное (звездочки) */
+.favorite {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-left: auto;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.favorite.active {
+    color: gold;
+}
+
+/* Сайдбар */
+.sidebar {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Реклама */
+.advertisement {
+    background-color: #d4edda;
+    border-radius: 10px;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.advertisement1 {
+    background-color: #d4edda;
+    border-radius: 10px;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.advertisement img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Подвал */
+.footer {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+}
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 160px;
+}
+.social-link {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.social-link:hover {
+    color: #ffeaa7;
+    text-decoration: none;
+}
+.phone {
+    font-weight: bold;
+    color: #ffeaa7;
+}
+
+/* Сообщения */
+.message {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Адаптивность */
+@media(max-width: 768px) {
+    .container {
+        width: 95%;
+        flex-direction: column;
+    }
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        width: 100%;
+        margin-left: 0;
+    }
+    .artwork {
+        flex-direction: column;
+        text-align: center;
+    }
+    .artwork img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .price-buttons {
+        justify-content: center;
+    }
+    .favorite {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* Заголовки по категориям */
+.category-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Обертка для контента и сайдбара */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* отступ между блоками */
+}
+.main-content {
+    flex: 3;
+}
+.sidebar {
+    flex: 1;
+}
+.advertisement img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*избранное*/
+ .nav-link {
+            font-size: 20px;
+            font-weight: normal;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: auto;
+            padding: 10px;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+        
+        /* Стиль для звездочки */
+        .favorite.active {
+            color: gold;
+        }
+        /* Стиль для стрелки или другого элемента, если нужен */
+        .timer {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #555;
+        }
+        /* Стиль для сообщения */
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+        }
+        /* Стиль для footer */
+        .footer {
+            background-color: #4CAF50;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer .contact-item {
+            width: 200px;
+        }
+
+/* Авторизация */
+/* Верхняя панель */
+.top-panel {
+  display: flex;
+  align-items: center;
+  background-color: #00a000; /* зеленый */
+  padding: 10px 20px;
+  font-size: 14px;
+}
+.logo-block {
+  background-color: #fff;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.title-block {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  padding: 5px 10px;
+  background-color: #00a000;
+  margin-right: 10px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-block {
+  background-color: #00a000;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.menu-block a {
+  text-decoration: none;
+  color: #fff;
+}
+.auth-block {
+  background-color: #00a000;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.auth-block a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Основной контейнер — занимает всё оставшееся пространство */
+.main-container {
+  flex: 1; /* занимает всё вертикальное пространство */
+  display: flex;
+  padding: 20px;
+}
+
+/* Левая секция: авторизация по центру */
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center; /* по вертикали */
+  justify-content: center; /* по горизонтали */
+}
+
+/* Центрированный блок авторизации */
+.auth-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+.auth-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+.auth-inputs input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.auth-buttons button {
+  padding: 8px;
+  background-color: #00a000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+.auth-buttons button:hover {
+  background-color: #008000;
+}
+.contact-info {
+  margin-top: 20px;
+  background-color: #00a000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Правая секция — место под рекламу внутри окошка */
+.right-section {
+  width: 350px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ad-window {
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  border: 2px dashed #00a000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Адаптивность */
+@media(max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-section {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 90%;
+  }
+  .auth-box {
+    width: 90%;
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* или любой цвет */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+.button:hover {
+  background-color: #45a049; /* эффект при наведении */
+}
+
+/* Личный кабинет *
+
+ /* Основной контейнер */
+  .main-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Центральный блок для фото и кнопки */
+  .center-block {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Маленький зеленый блок вокруг фото */
+  .photo-green-background {
+    background-color: #00A550;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px; /* немного больше фото */
+    height: 170px;
+  }
+
+  /* Фото профиля */
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    background-color: #E0E0E0; /* светло-серый фон */
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Белый блок под фото */
+  .profile-info-block {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Кнопка редактировать профиль */
+  .edit-profile-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #00A550;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+
+  /* Личный кабинет */
+  .page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.add-picture-form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.left-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn {
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+.path-info {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Область для картинки */
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Картинка — адаптируемая */
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTINA</title>
+    <link rel="stylesheet" href="/media/styles.css">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a href="/">
+            <img src="/media/logo.png" alt="Логотип"/>
+        </a>
+    </div>
+    <div class="title">KARTINA</div>
+    <div class="user-area">Мои картины</div>
+</div>
+<h2 style="text-align: center; margin-top: 20px;">Мои избранные картины</h2>
+
+
+<div class="container">
+
+    <div class="main-content list">
+        {% for el in favorite %}
+        <div class="artwork">
+            <img src="{{ el.picture.url }}" alt="{{ el.title }}">
+            <div>
+                <h3>{{ el.title }}</h3>
+                <p>Цена: <span class="price"> {{ el.price }} </span></p>
+                <div class="price-buttons">
+                    <button onclick="setCustomPrice(100, this)">100$</button>
+                    <button onclick="setCustomPrice(500, this)">500$</button>
+                    <button onclick="setCustomPrice(1000, this)">1000$</button>
+                    <button onclick="setCustomPrice(5000, this)">5000$</button>
+                    <button onclick="showCustomPrice(this)">Своя цена</button>
+                </div>
+                <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                <div class="message" style="display: none;"></div>
+            </div>
+            <div class="favorite" onclick="removeFromFavorites(this, {{ el.id }})">★</div>
+            <div class="timer">00:10:00</div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+</div>
+</div>
+<!-- Подвал -->
+<div class="footer">
+    <div class="contact-item">
+        <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+    </div>
+    <div class="contact-item">
+        <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+    </div>
+    <div class="contact-item">
+        <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+    </div>
+    <div class="contact-item">
+        <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+    </div>
+</div>
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+            function removeFromFavorites(element, favoriteId) {
+        if (!confirm('Удалить из избранного?')) return;
+
+        fetch('/remove_from_favorites', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken') // Теперь getCookie определена
+            },
+            body: JSON.stringify({
+                favorite_id: favoriteId
+            })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Ошибка сервера');
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                element.closest('.artwork').remove();
+                showNotification('Удалено из избранного');
+            } else {
+                showNotification('Ошибка: ' + (data.error || 'Не удалось удалить'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Ошибка соединения');
+        });
+    }
+
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.right = '20px';
+        notification.style.padding = '10px 20px';
+        notification.style.background = '#4CAF50';
+        notification.style.color = 'white';
+        notification.style.borderRadius = '5px';
+        notification.style.zIndex = '1000';
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+</script>
+</body>
+</html>

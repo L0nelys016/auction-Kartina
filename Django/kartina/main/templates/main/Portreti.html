@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTINA - Современное искусство</title>
+    <link rel="stylesheet" href="/media/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="/">
+                <img src="/media/logo.png" alt="Логотип">
+            </a>
+        </div>
+        <div class="title">KARTINA</div>
+        <div class="user-area">
+            <a href="/favorites" style="text-decoration: none; color: inherit;">Избранное</a>
+        </div>
+        <div class="user-area">
+            <div>Мои картины</div>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 20px;">Портреты</h2>
+
+    <div class="container">
+        <div class="main-content list">
+            {% for el in portret_pic %}
+                <div class="artwork">
+                    <img src="{{ el.picture.url }}" alt="{{ el.title }}">
+                    <div>
+                        <h3>{{ el.title }}</h3>
+                        <p>Цена: <span class="price">{{ el.price }}</span></p>
+                        <div class="price-buttons">
+                            <button onclick="setCustomPrice(100, this)">100$</button>
+                            <button onclick="setCustomPrice(500, this)">500$</button>
+                            <button onclick="setCustomPrice(1000, this)">1000$</button>
+                            <button onclick="setCustomPrice(5000, this)">5000$</button>
+                            <button onclick="showCustomPrice(this)">Своя цена</button>
+                        </div>
+                        <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                        <div class="message" style="display: none;"></div>
+                    </div>
+                    <div class="favorite"
+                         onclick="toggleFavorite(this, {{ el.id }}, 'portret')"
+                         {% if el.id in favorite_ids_dict %}
+                         data-favorite-id="{{ favorite_ids_dict|get_item:el.id }}"
+                         {% endif %}>
+                        {% if el.id in favorite_ids_dict %}★{% else %}☆{% endif %}
+                    </div>
+                    <div class="timer">00:10:00</div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="sidebar">
+            <div class="advertisement">
+                <img src="/media/auction-art.png" alt="Реклама аукциона картин">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="contact-item">
+            <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+        </div>
+        <div class="contact-item">
+            <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+        </div>
+        <div class="contact-item">
+            <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+        </div>
+        <div class="contact-item">
+            <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+        </div>
+    </div>
+
+<script>
+// Функция для получения CSRF токена
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+// Функция переключения избранного для современного искусства
+function toggleFavorite(element, pictureId, pictureType) {
+    const isFavorite = element.textContent.trim() === '★';
+    const endpoint = isFavorite ? 'remove_from_favorites' : 'add_to_favorites';
+
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({
+            picture_id: pictureId,
+            picture_type: pictureType,
+            favorite_id: element.dataset.favoriteId || null
+        })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            element.textContent = isFavorite ? '☆' : '★';
+
+            // Обновляем data-атрибут если это добавление
+            if (data.favorite_id) {
+                element.dataset.favoriteId = data.favorite_id;
+            } else {
+                delete element.dataset.favoriteId;
+            }
+
+            // Анимация
+            const artwork = element.closest('.artwork');
+            artwork.style.transition = 'all 0.3s';
+            artwork.style.boxShadow = isFavorite ? '' : '0 0 10px #4CAF50';
+            setTimeout(() => artwork.style.boxShadow = '', 1000);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        element.textContent = isFavorite ? '★' : '☆';
+    });
+}
+
+</script>
+</body>
+</html>

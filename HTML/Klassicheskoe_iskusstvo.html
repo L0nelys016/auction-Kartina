@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTINA</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="Glavnay_stranica.html">
+            <img src="logo.png" alt="Логотип">
+            </a>
+        </div>
+        <div class="title">KARTINA</div>
+        <div class="user-area">
+        <div><a href="favorites.html" style="text-decoration: none; color: inherit;">Избранное</a></div>
+        </div>
+        <div class="user-area">
+           
+            <div><a href="Lichniy_kabinet.html" style="text-decoration: none; color: inherit;">Вход / Личный кабинет</a></div>
+        </div>
+    </div>
+
+    <div class="category-title">Классическое искусство</div>
+
+    <div class="container">
+        <div class="main-content list">
+            <div class="artwork"data-id="9">
+                <img src="Kartina1_Klas_isk.png" alt="Картина 1">
+                <div>
+                    <h3>Девочка с персиками</h3>
+                    <p>Цена: <span class="price"> 
+                        <button style="background-color: #4CAF50; border: none; color: white; border-radius: 5px; padding: 10px; cursor: pointer;">Изменяемая цена</button>
+                    </span></p>
+                    <div class="price-buttons">
+                        <button onclick="setCustomPrice(100, this)">100$</button>
+                        <button onclick="setCustomPrice(500, this)">500$</button>
+                        <button onclick="setCustomPrice(1000, this)">1000$</button>
+                        <button onclick="setCustomPrice(5000, this)">5000$</button>
+                        <button onclick="showCustomPrice(this)">Своя цена</button>
+                    </div>
+                    <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                    <div class="message" style="display: none;"></div>
+                </div>
+                <div class="favorite" onclick="toggleFavorite(this)">☆</div>
+                <div class="timer">00:10:00</div>
+            </div>
+
+            <div class="artwork"data-id="10">
+                <img src="Kartina2_Klas_isk.png" alt="Картина 2">
+                <div>
+                    <h3>Богатыри (Три богатыря)</h3>
+                    <p>Цена: <span class="price"> 
+                        <button style="background-color: #4CAF50; border: none; color: white; border-radius: 5px; padding: 10px; cursor: pointer;">Изменяемая цена</button>
+                    </span></p>
+                    <div class="price-buttons">
+                        <button onclick="setCustomPrice(100, this)">100$</button>
+                        <button onclick="setCustomPrice(500, this)">500$</button>
+                        <button onclick="setCustomPrice(1000, this)">1000$</button>
+                        <button onclick="setCustomPrice(5000, this)">5000$</button>
+                        <button onclick="showCustomPrice(this)">Своя цена</button>
+                    </div>
+                    <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                    <div class="message" style="display: none;"></div>
+                </div>
+                <div class="favorite" onclick="toggleFavorite(this)">☆</div>
+                <div class="timer">00:10:00</div>
+            </div>
+
+            <div class="artwork"data-id="11">
+                <img src="Kartina3_Klas_isk.png" alt="Картина 3">
+                <div>
+                    <h3>Утро в сосновом бору</h3>
+                    <p>Цена: <span class="price"> 
+                        <button style="background-color: #4CAF50; border: none; color: white; border-radius: 5px; padding: 10px; cursor: pointer;">Изменяемая цена</button>
+                    </span></p>
+                    <div class="price-buttons">
+                        <button onclick="setCustomPrice(100, this)">100$</button>
+                        <button onclick="setCustomPrice(500, this)">500$</button>
+                        <button onclick="setCustomPrice(1000, this)">1000$</button>
+                        <button onclick="setCustomPrice(5000, this)">5000$</button>
+                        <button onclick="showCustomPrice(this)">Своя цена</button>
+                    </div>
+                    <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                    <div class="message" style="display: none;"></div>
+                </div>
+                <div class="favorite" onclick="toggleFavorite(this)">☆</div>
+                <div class="timer">00:10:00</div>
+            </div>
+
+            <div class="artwork"data-id="12">
+                <img src="Kartina4_Klas_isk.png" alt="Картина 4">
+                <div>
+                    <h3>Бурлаки на Волге</h3>
+                    <p>Цена: <span class="price"> 
+                        <button style="background-color: #4CAF50; border: none; color: white; border-radius: 5px; padding: 10px; cursor: pointer;">Изменяемая цена</button>
+                    </span></p>
+                    <div class="price-buttons">
+                        <button onclick="setCustomPrice(100, this)">100$</button>
+                        <button onclick="setCustomPrice(500, this)">500$</button>
+                        <button onclick="setCustomPrice(1000, this)">1000$</button>
+                        <button onclick="setCustomPrice(5000, this)">5000$</button>
+                        <button onclick="showCustomPrice(this)">Своя цена</button>
+                    </div>
+                    <input type="number" class="custom-price" placeholder="Введите свою цену" style="display: none;">
+                    <div class="message" style="display: none;"></div>
+                </div>
+                <div class="favorite" onclick="toggleFavorite(this)">☆</div>
+                <div class="timer">00:10:00</div>
+                
+            </div>
+            
+        </div>
+
+
+        <div class="sidebar">
+      <div class="advertisement">
+        <img src="auction-art.png" alt="Реклама аукциона картин" />
+      </div>
+    </div>
+    </div>
+    </div>
+    <!-- Подвал -->
+<div class="footer">
+    <div class="contact-item">
+        <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+    </div>
+    <div class="contact-item">
+        <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+    </div>
+    <div class="contact-item">
+        <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+    </div>
+    <div class="contact-item">
+        <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+    </div>
+</div>
+    <script>
+        function setCustomPrice(amount, button) {
+            const customPriceInput = button.closest('.artwork').querySelector('.custom-price');
+            customPriceInput.value = amount;
+            customPriceInput.style.display = 'block';
+            customPriceInput.focus();
+            const message = button.closest('.artwork').querySelector('.message');
+            message.style.display = 'none';
+        }
+
+        function showCustomPrice(button) {
+            const customPriceInput = button.closest('.artwork').querySelector('.custom-price');
+            customPriceInput.style.display = 'block';
+            customPriceInput.focus();
+            const message = button.closest('.artwork').querySelector('.message');
+            message.style.display = 'none';
+        }
+
+        function toggleFavorite(star) {
+            star.classList.toggle('active');
+            if (star.classList.contains('active')) {
+                star.textContent = '★'; // Закрашенная звезда
+            } else {
+                star.textContent = '☆'; // Незакрашенная звезда
+            }
+        }
+
+        document.querySelectorAll('.custom-price').forEach(input => {
+            input.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    const message = this.closest('.artwork').querySelector('.message');
+                    message.textContent = "Вы стали первым по аукциону с ценой: " + this.value + "$";
+                    message.style.display = 'block';
+                }
+            });
+        });
+
+        document.querySelectorAll('.price-buttons button').forEach(button => {
+            if (!button.hasAttribute('onclick') || button.getAttribute('onclick').indexOf('showCustomPrice') === -1) {
+                button.addEventListener('click', function() {
+                    const message = this.closest('.artwork').querySelector('.message');
+                    message.textContent = "Вы стали первым по аукциону с ценой: " + this.textContent;
+                    message.style.display = 'block';
+                });
+            }
+        });
+
+        // Обработчики для звездочек
+        document.querySelectorAll('.favorite').forEach(star => {
+            star.addEventListener('click', function() {
+                toggleFavorite(this);
+            });
+        });
+        
+  // Функция для переключения фаворита
+  function toggleFavorite(star, productId) {
+    let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+    if (favorites.includes(productId)) {
+      // Удаляем из избранного
+      favorites = favorites.filter(id => id !== productId);
+      star.textContent = '☆'; // Незакрашенная
+    } else {
+      // Добавляем в избранное
+      favorites.push(productId);
+      star.textContent = '★'; // Закрашенная
+    }
+    localStorage.setItem('Избранное', JSON.stringify(favorites));
+  }
+
+  // Инициализация звездочек при загрузке страницы
+  document.querySelectorAll('.artwork').forEach(art => {
+    const productId = parseInt(art.dataset.id);
+    const star = art.querySelector('.favorite');
+    let favorites = JSON.parse(localStorage.getItem('Избранное')) || [];
+    if (favorites.includes(productId)) {
+      star.textContent = '★';
+    } else {
+      star.textContent = '☆';
+    }
+    // Обработчик
+    star.onclick = () => toggleFavorite(star, productId);
+  });
+    </script>
+</body>
+</html>
