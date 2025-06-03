@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTINA - Авторизация</title>
+    <link rel="stylesheet" href="/media/styles.css">
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Контейнер формы */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 20px;
+        }
+
+        /* Блок авторизации */
+        .auth-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Заголовок */
+        .auth-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Поля ввода */
+        .auth-inputs input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        /* Кнопки - ОСНОВНЫЕ ИЗМЕНЕНИЯ ЗДЕСЬ */
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .auth-buttons a,
+        .auth-buttons button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .button-login {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .button-register {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+            text-align: center; /* Добавлено для выравнивания текста */
+        }
+
+        /* Эффекты при наведении */
+        .button-login:hover {
+            background-color: #3e8e41;
+            transform: translateY(-1px);
+        }
+
+        .button-register:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-1px);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <a href="/">
+                <img src="/media/logo.png" alt="Логотип">
+            </a>
+        </div>
+        <div class="title">KARTINA</div>
+    </div>
+
+    <div class="main-container">
+        <div class="auth-box">
+            <div class="auth-title">Вход в аккаунт</div>
+
+            <form method="post" action="/login">
+                {% csrf_token %}
+
+                <div class="auth-inputs">
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+
+                    <input type="text" name="username" placeholder="Логин"
+                           value="{{ username|default:'' }}" required>
+
+                    <input type="password" name="password" placeholder="Пароль" required>
+                </div>
+
+                <div class="auth-buttons">
+                    <button type="submit" class="button-login">Войти</button>
+                    <a href="/register" class="button-login" >Зарегистрироваться</a>
+                </div>
+            </form>
+
+            <div class="forgot-password">
+                <a href="/password-reset">Забыли пароль?</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="contact-item">
+            <strong>Телефон:</strong> <span class="phone">+7 123 456 78 90</span>
+        </div>
+        <div class="contact-item">
+            <strong>ВКонтакте:</strong> <a class="social-link" href="https://vk.com/yourprofile">vk.com/yourprofile</a>
+        </div>
+        <div class="contact-item">
+            <strong>Телеграм:</strong> <a class="social-link" href="https://t.me/yourusername">@yourusername</a>
+        </div>
+        <div class="contact-item">
+            <strong>Email:</strong> <a class="social-link" href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+        </div>
+    </div>
+
+</body>
+</html>

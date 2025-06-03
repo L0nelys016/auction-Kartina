@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import modern_picture, classic_picture, abstract_picture, portret_picture, favorites_picture
 from django.template.defaulttags import register
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from .forms import RegisterForm, LoginForm
 
 
 @register.filter
@@ -208,3 +211,43 @@ def delete_picture(request):
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
     return JsonResponse({'success': False, 'error': 'Только POST-запросы'}, status=405)
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Автоматический вход после регистрации
+            return redirect('/')  # Перенаправление на главную
+    else:
+        form = RegisterForm()
+
+    return render(request, 'main/Registration.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')  # Изменили с email на username
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            return render(request, 'main/Avtorizacia.html', {
+                'error': 'Неверный логин или пароль',
+                'username': username  # Сохраняем введённый логин
+            })
+
+    return render(request, 'main/Avtorizacia.html')
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
+@login_required
+def profile_view(request):
+    return render(request, 'main/my_picture.html', {'user': request.user})
